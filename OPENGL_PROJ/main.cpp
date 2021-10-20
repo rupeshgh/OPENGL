@@ -12,7 +12,7 @@
 
 #include"errorCheck.h"
 
-#include"texture.h"
+//#include"texture.h"
 
 int main()
 {
@@ -59,7 +59,14 @@ int main()
 		 0, 3,	2
 	};
 	
-	
+	//shader shaderProgram("default.vert", "default.frag");
+	//use this if you have vertex and fragment shader on different file
+
+	shader shaderProgram("Basic.shader");
+	//use this if you have vertex and fragment shader on same file
+
+
+
 	VAO VAO1;
 	VAO1.Bind();
 	
@@ -86,8 +93,7 @@ int main()
 
 
 	
-	shader shaderProgram("default.vert", "default.frag");
-	shaderProgram.Activate();
+	//shaderProgram.Activate();
 
 
 	GLint ScaleLocation = glGetUniformLocation(shaderProgram.ID, "gScale");
@@ -96,18 +102,18 @@ int main()
 
 	VAO1.Bind();
 
-	std::string path = "C:\\Users\\rupesh\\Desktop\\images";
+	//std::string path = "C:\\Users\\rupesh\\Desktop\\images";
 
-	texture t("C:\\Users\\rupesh\\Desktop\\images\\tick.png");
-	t.Bind();
+	//texture t("C:\\Users\\rupesh\\Desktop\\images\\tick.png");
+	//t.Bind();
 
-	GLuint tex0Uni = glGetUniformLocation(shaderProgram.ID, "tex0");
-	//shaderProgram.Activate();
-	glUniform1i(tex0Uni, 0);
+	//GLuint tex0Uni = glGetUniformLocation(shaderProgram.ID, "tex0");
+	////shaderProgram.Activate();
+	//glUniform1i(tex0Uni, 0);
 
 
 
-	t.unBind();
+	//t.unBind();
 
 
 
@@ -129,8 +135,8 @@ int main()
 		shaderProgram.Activate();
 
 
-		t.Bind();
-		//VAO1.Bind();
+		//t.Bind();
+		VAO1.Bind();
 		//glDrawArrays(GL_TRIANGLES, 0, 6);
 		
 		
@@ -143,7 +149,7 @@ int main()
 
 		glUniform1f(ScaleLocation, Scale);
 	
-		//	glDrawElements(GL_TRIANGLES, 6, GL_FLOAT, nullptr);
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 		
 
 		glfwSwapBuffers(window);

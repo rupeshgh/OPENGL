@@ -44,6 +44,56 @@ static ShaderSource parseShader(const std::string& filepath) {
 
 
 
+
+shader::shader(const char* shaderFile) {
+	ShaderSource source = parseShader(shaderFile);
+
+	std::string vertexCode = source.veretxSource;
+	std::string fragmentCode = source.fragmentSource;
+	std::cout << vertexCode << std::endl;
+	std::cout << fragmentCode << std::endl;
+
+	
+	const char* vertexSource = vertexCode.c_str();
+	const char* fragmentSource = fragmentCode.c_str();
+
+	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vertexSource, NULL);
+	glCompileShader(vertexShader);
+
+
+	compileErrors(vertexShader, "VERTEX");
+
+
+	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
+	glCompileShader(fragmentShader);
+
+	compileErrors(vertexShader, "fragment");
+
+
+	ID = glCreateProgram();
+	glAttachShader(ID, vertexShader);
+	glAttachShader(ID, fragmentShader);
+
+	glLinkProgram(ID);
+
+
+	glValidateProgram(ID);
+
+	compileErrors(ID, "PROGRAM");
+
+
+
+
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
+
+
+}
+
+
 std::string  get_file_contents(const char* filename) {
 
 	std::ifstream in(filename, std::ios::binary);
@@ -64,19 +114,25 @@ std::string  get_file_contents(const char* filename) {
 }
 
 
+
+
+
+
+
+
 	shader::shader(const char* vertexFile, const char* fragmentFile) {
 
-	ShaderSource source = parseShader("Basic.shader");
+	/*ShaderSource source = parseShader("Basic.shader");
 
 	std::string vertexCode = source.veretxSource;
 	std::string fragmentCode = source.fragmentSource;
 	std::cout << vertexCode << std::endl;
-	std::cout << fragmentCode << std::endl;
+	std::cout << fragmentCode << std::endl;*/
 	
-	//std::string vertexCode = get_file_contents(vertexFile);
-	//std::string fragmentCode = get_file_contents(fragmentFile);
-	//	std::cout << vertexCode;
-	//std::cout << fragmentCode << std::endl;
+	std::string vertexCode = get_file_contents(vertexFile);
+	std::string fragmentCode = get_file_contents(fragmentFile);
+		std::cout << vertexCode;
+	std::cout << fragmentCode << std::endl;
 	const char* vertexSource = vertexCode.c_str();
 	const char* fragmentSource = fragmentCode.c_str();
 
