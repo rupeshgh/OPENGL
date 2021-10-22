@@ -158,9 +158,7 @@ int main()
 			glm::mat4 view = glm::mat4(1.0f);
 			glm::mat4 proj = glm::mat4(1.0f);
 
-			//Pyramid i cord are negative ..we are using right hand cord system..
-			//and want the object to move in opposite direction to the movement of camera
-
+		
 			model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));// rotation about y-axis
 			view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));// model to world cordinate by view *model*pos
 			proj = glm::perspective(glm::radians(45.0f), (float)(w_Width / w_Height), 0.1f, 100.0f);//perspective projection to clip plane by proj*view*model*pos
