@@ -72,13 +72,7 @@ int main()
 
 	};
 	
-	/*glm::vec3 Pyramid[] = {
-	glm::vec3(0.0f, -0.5f, -2.0f),
-	glm::vec3(0.0f,  -1.5f, -3.0f),
-	glm::vec3(-0.5f, -2.5f, -4.0f),
-	glm::vec3(-0.0f, -3.5f, -5.0f)
 	
-	};*/
 
 
 	//shader shaderProgram("default.vert", "default.frag");
@@ -114,27 +108,13 @@ int main()
 
 	GLint ScaleLocation = glGetUniformLocation(shaderProgram.ID, "gScale");
 
-	
-	/*texture t("C:/Users/rupesh/Desktop/images/img1.jpg");
-	t.Bind();
-	GLuint tex0Uni = glGetUniformLocation(shaderProgram.ID, "tex0");
-	shaderProgram.Activate();
-	*/
-
 	  		
 	 
 	glEnable(GL_DEPTH_TEST);
 	//glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
-
-
-
+	
+	//camera 
 	camera cam(w_Width, w_Height, glm::vec3(0.0f, 0.0f, 4.0f));
-
-
-
-
-
-
 
 	Timestep timestep;
 	float rotation = 0.0f;
@@ -173,9 +153,7 @@ int main()
 
 		glUniform1f(ScaleLocation, Scale);
 
-
-	//for (unsigned int i = 0; i < 1; i++) {
-
+	
 			glm::mat4 model = glm::mat4(1.0f);//Init with a unit matrix
 			glm::mat4 view = glm::mat4(1.0f);
 			glm::mat4 proj = glm::mat4(1.0f);
@@ -195,28 +173,10 @@ int main()
 			int projLocation = glGetUniformLocation(shaderProgram.ID, "proj");
 			glUniformMatrix4fv(projLocation, 1, GL_FALSE, value_ptr(proj));
 			glDrawElements(GL_TRIANGLES, sizeof(indexes)/ sizeof(unsigned int), GL_UNSIGNED_INT, nullptr);
-		//}
+	
+			
 
-		
-		
-
-		
-		
-		
 				
-		//glUniform1f(tex0Uni, 0.5f);
-		//glBindTexture(GL_TEXTURE_2D,shaderProgram.ID);
-		
-		//glBindTexture(GL_TEXTURE_2D, ok);
-		
-		//t.Bind();
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
-		
-		
-		
-		//glUniform1i(tex0Uni, 0);
-		//shaderProgram.Activate();
-		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
