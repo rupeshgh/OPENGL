@@ -102,9 +102,8 @@ int main()
 
 	VAO1.Bind();
 
-	//std::string path = "C:\\Users\\rupesh\\Desktop\\images";
-
-	//texture t("C:\\Users\\rupesh\\Desktop\\images\\tick.png");
+	
+	//texture t("tick.png");//path
 	//t.Bind();
 
 	//GLuint tex0Uni = glGetUniformLocation(shaderProgram.ID, "tex0");
