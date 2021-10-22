@@ -115,7 +115,7 @@ int main()
 	GLint ScaleLocation = glGetUniformLocation(shaderProgram.ID, "gScale");
 
 	
-	/*texture t("C:/Users/rupesh/Desktop/images/img1.jpg");
+	/*texture t("img1.jpg");//path
 	t.Bind();
 	GLuint tex0Uni = glGetUniformLocation(shaderProgram.ID, "tex0");
 	shaderProgram.Activate();
