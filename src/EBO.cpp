@@ -2,6 +2,7 @@
 #include"errorCheck.h"
 
 
+
 EBO::EBO(GLuint* indices, GLsizeiptr size) {
 	
 	glGenBuffers(1, &ID);

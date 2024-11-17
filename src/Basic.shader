@@ -1,4 +1,3 @@
-#shader vertex
 #version 330 core
 layout(location = 0) in vec3 pos;
 layout(location = 1) in vec3 icolor;
@@ -26,7 +25,6 @@ void main()
 
 
 
-#shader fragment
 #version 330 core
 out vec4 colors;
 

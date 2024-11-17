@@ -3,18 +3,20 @@
 #include<GLFW/glfw3.h>
 #include<iostream>
 
-#define ASSERT(x) if(!x) __debugbreak();
+#if defined(_WIN32) || defined(_WIN64)
+	// Windows specific
+	#define ASSERT(x) if (!(x)) __debugbreak();
+#elif defined(__APPLE__)
+	// macOS specific
+	#define ASSERT(x) if (!(x)) __builtin_trap();
+#else
+	// Default for other platforms
+	#define ASSERT(x) if (!(x)) abort();
+#endif
 
 #define glCall(x)  GLClearError();\
 x;\
 ASSERT(glLogCall(#x,__FILE__,__LINE__))
-
-
-
-// __debugbreak(); compiler instrinsic
-// \ ignores new line char
-// NO SPACE after  \
-
 static void GLClearError() {
 	while (glGetError() != GL_NO_ERROR);
 }

@@ -13,7 +13,7 @@ class shader {
 		GLuint ID;
 		shader(const char* vertexFile, const char* shaderFIle);
 		shader(const char* shaderfile);
-		
+
 		void Activate();
 		void Delete();
 

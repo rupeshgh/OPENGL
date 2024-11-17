@@ -1,4 +1,3 @@
-#pragma once
 #include"shaderClass.h"
 #include"errorCheck.h"
 
@@ -108,6 +107,11 @@ std::string  get_file_contents(const char* filename) {
 		in.close();
 
 		return(contents);
+
+	}else {
+
+			// Throw an exception with the file name for debugging clarity
+			throw std::runtime_error("Could not open file: " + std::string(filename));
 
 	}
 	throw(errno);
