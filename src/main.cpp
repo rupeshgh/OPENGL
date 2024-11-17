@@ -128,7 +128,7 @@ int main() {
         VAO1.Bind();
         double currTime = glfwGetTime();
         if (currTime - prevTime >= 1 / 60) {
-            rotation += 0.03f;
+            rotation += 0.3f;
             prevTime = currTime;
         }
 
@@ -155,7 +155,7 @@ int main() {
         glm::mat4 proj = glm::mat4(1.0f);
 
 
-        model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f)); // rotation about y-axis
+        model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 0.1f, 0.0f)); // rotation about y-axis
         view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f)); // model to world cordinate by view *model*pos
         proj = glm::perspective(glm::radians(45.0f), (float) (w_Width / w_Height), 0.1f, 100.0f);
         //perspective projection to clip plane by proj*view*model*pos
