@@ -19,7 +19,7 @@ void main()
 {
 
     jcolor = icolor;
-    gl_Position = camMatrix * proj * view* model * vec4(pos, 1.0f);
+    gl_Position =camMatrix *view * vec4(pos, 1.0f);
 //    gl_Position = camMatrix*vec4(pos, 1.0f);
 
 }

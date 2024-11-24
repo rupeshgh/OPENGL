@@ -5,7 +5,7 @@ in vec3 jcolor;
 
 void main()
 {
-    colors = vec4(jcolor, 1.0f);
+    colors = vec4(jcolor,  1.0f);
 
 
 }
